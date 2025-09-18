@@ -1,0 +1,15 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>DreamWeaver</title>  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  
+</head>  
+<body>  
+    <h1>Partagez vos rêves</h1>  
+    <textarea id="dreamText" placeholder="Décrivez votre rêve..."></textarea>  
+    <button onclick="generateDream()">Générer</button>  
+    <div id="visualization"></div>  
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>  
+</body>  
+</html>
