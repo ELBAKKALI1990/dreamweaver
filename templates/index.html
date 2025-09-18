@@ -1,15 +1,90 @@
-<!DOCTYPE html>  
-<html lang="fr">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>DreamWeaver</title>  
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  
-</head>  
-<body>  
-    <h1>Partagez vos rêves</h1>  
-    <textarea id="dreamText" placeholder="Décrivez votre rêve..."></textarea>  
-    <button onclick="generateDream()">Générer</button>  
-    <div id="visualization"></div>  
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>  
-</body>  
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWeaver - Partagez et visualisez vos rêves</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DreamWeaver</h1>
+            <p class="tagline">Partagez et visualisez vos rêves à travers le monde</p>
+        </header>
+        
+        <div class="main-content">
+            <section class="dream-input-section">
+                <h2>Décrivez votre rêve</h2>
+                
+                <div class="input-group">
+                    <textarea id="dreamText" placeholder="Racontez votre rêve en détail..."></textarea>
+                </div>
+                
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-magic"></i> Générer la visualisation
+                </button>
+                
+                <div class="location-status">
+                    <i class="fas fa-location-dot"></i>
+                    <span id="locationStatus">Localisation: En attente...</span>
+                </div>
+                
+                <div class="dream-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="dreamsCount">0</span>
+                        <span class="stat-label">Rêves partagés</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="countriesCount">0</span>
+                        <span class="stat-label">Pays</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="positiveRate">0%</span>
+                        <span class="stat-label">Rêves positifs</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="visualization-section hidden" id="visualizationSection">
+                <h2>Votre rêve visualisé</h2>
+                <div class="dream-visualization">
+                    <img id="dreamImage" src="" alt="Visualisation de votre rêve">
+                    <div class="dream-actions">
+                        <button class="action-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                        <button class="action-btn" id="shareBtn">
+                            <i class="fas fa-share-alt"></i> Partager
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="map-section">
+                <h2>Carte des rêves mondiaux</h2>
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button id="refreshMapBtn" class="control-btn">
+                        <i class="fas fa-sync-alt"></i> Actualiser la carte
+                    </button>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>DreamWeaver &copy; 2023 - Partager nos rêves pour un monde plus connecté</p>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
 </html>
